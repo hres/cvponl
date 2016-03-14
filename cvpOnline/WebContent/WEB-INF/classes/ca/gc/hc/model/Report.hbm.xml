@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="ca.gc.hc.model.Report" table="REPORTS">
+		<id name="reportID" column="REPORT_ID" unsaved-value="null">
+			<generator class="native" />
+		</id>
+
+		<property name="reportNumber" column="REPORT_NO" />
+		<property name="versionNumber" column="VERSION_NO" />
+		<property name="dateReceived" column="DATRECEIVED" />
+		<property name="initialDateReceived" column="DATINTRECEIVED" />
+		<property name="mahNumber" column="MAH_NO" />
+		<property name="reportTypeCode" column="REPORT_TYPE_CODE" />
+		<property name="reportTypeNameE" column="REPORT_TYPE_ENG" />
+		<property name="reportTypeNameF" column="REPORT_TYPE_FR" />
+		<property name="age" column="AGE" />
+		<property name="ageYears" column="AGE_Y" />
+		<property name="ageUnitCode" column="AGE_UNIT_CODE" />
+		<property name="ageUnitNameE" column="AGE_UNIT_ENG" />
+		<property name="ageUnitNameF" column="AGE_UNIT_FR" />
+		<property name="ageGroupCode" column="AGE_GROUP_CODE" />
+		<property name="ageGroupNameE" column="AGE_GROUP_ENG" />
+		<property name="ageGroupNameF" column="AGE_GROUP_FR" />
+		<property name="genderCode" column="GENDER_CODE" />
+		<property name="genderNameE" column="GENDER_ENG" />
+		<property name="genderNameF" column="GENDER_FR" />
+		<property name="outcomeCode" column="OUTCOME_CODE" />
+		<property name="outcomeNameE" column="OUTCOME_ENG" />
+		<property name="outcomeNameF" column="OUTCOME_FR" />
+		<property name="weight" column="WEIGHT" />
+		<property name="weightUnitCode" column="WEIGHT_UNIT_CODE" />
+		<property name="weightUnitNameE" column="WEIGHT_UNIT_ENG" />
+		<property name="weightUnitNameF" column="WEIGHT_UNIT_FR" />
+		<property name="height" column="HEIGHT" />
+		<property name="heightUnitCode" column="HEIGHT_UNIT_CODE" />
+		<property name="heightUnitNameE" column="HEIGHT_UNIT_ENG" />
+		<property name="heightUnitNameF" column="HEIGHT_UNIT_FR" />
+		<property name="seriousnessCode" column="SERIOUSNESS_CODE" />
+		<property name="seriousnessNameE" column="SERIOUSNESS_ENG" />
+		<property name="seriousnessNameF" column="SERIOUSNESS_FR" />
+		<property name="death" column="DEATH" />
+		<property name="disability" column="DISABILITY" />
+		<property name="congenitalAnomaly" column="CONGENITAL_ANOMALY" />
+		<property name="lifeThreatening" column="LIFE_THREATENING" />
+		<property name="hospitalRequired" column="HOSP_REQUIRED" />
+		<property name="otherMedicalCondition" column="OTHER_MEDICALLY_IMP_COND" />
+		<property name="reporterTypeCode" column="REPORTER_TYPE_CODE" />
+		<property name="reporterTypeNameE" column="REPORTER_TYPE_ENG" />
+		<property name="reporterTypeNameF" column="REPORTER_TYPE_FR" />
+		<property name="reportSourceCode" column="SOURCE_CODE" />
+		<property name="reportSourceNameE" column="SOURCE_ENG" />
+		<property name="reportSourceNameF" column="SOURCE_FR" />
+		<property name="reportLinkFlg" column="REPORT_LINK_FLG" />
+		<property name="aerID" column="AER_ID" />
+		<property name="ptNameE" column="PT_NAME_ENG" />
+		<property name="ptNameF" column="PT_NAME_FR" />
+		<property name="socNameE" column="SOC_NAME_ENG" />
+		<property name="socNameF" column="SOC_NAME_FR" />
+		<property name="duration" column="DURATION" />
+		<property name="durationUnitE" column="DURATION_UNIT_ENG" />
+		<property name="durationUnitF" column="DURATION_UNIT_FR" />
+		<property name="drugName" column="DRUGNAME" />
+
+		<set name="drugs" inverse="true" outer-join="true" order-by="DRUGNAME"
+			batch-size="3">
+			<key column="REPORT_ID" />
+			<one-to-many class="ca.gc.hc.model.ReportDrug" not-found="exception"
+				embed-xml="true" />
+		</set>
+
+		<set name="reactions" inverse="true" order-by="PT_NAME_ENG">
+			<key column="REPORT_ID" />
+			<one-to-many class="ca.gc.hc.model.Reaction" not-found="exception"
+				embed-xml="true" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>   

@@ -1,0 +1,18 @@
+<!-- deprecated May 9, 2012
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping>
+       
+    <class name="ca.gc.hc.model.lookups.ReportFeature" table="REPORT_FEATURE_LX">
+    	<id name="reportFeatureID" column="REPORT_FEATURE_LX_ID" unsaved-value="null">
+    	    <generator class="native"/>
+    	</id>
+    	<property name="reportFeatureCode" column="REPORT_FEATURE_CODE"/>
+    	<property name="reportFeatureNameE" column="EN_DESC"/>
+    	<property name="reportFeatureNameF" column="FR_DESC"/>    	
+    </class>
+
+</hibernate-mapping>   -->

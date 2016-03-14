@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping>
+       
+    <class name="ca.gc.hc.model.Ingredient" table="INGREDIENTS">
+    	<id name="ingredientID" column="INGREDIENT_ID" unsaved-value="null">
+    	    <generator class="native"/>
+    	</id>
+    	<property name="actingIngredient" column="ACTINGINGREDIENT"/>    	
+    	<property name="drugName" column="DRUGNAME"/>
+
+		<many-to-one name="drugProduct" 
+        		    class="ca.gc.hc.model.Drug"
+        		    column="PRODUCT_ID" cascade="none" lazy="false" insert="false" update="false" />
+		<many-to-one name="activeIngredient" 
+        		    class="ca.gc.hc.model.ActiveIngredient"
+        		    column="ACTIVE_INGREDIENT_ID" cascade="none" lazy="false" insert="false" update="false" />
+
+    </class>
+
+</hibernate-mapping>   

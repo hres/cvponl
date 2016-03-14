@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping>
+       
+    <class name="ca.gc.hc.model.lookups.ReportLink" table="REPORT_LINKS">
+    	<id name="reportLinkID" column="REPORT_LINK_ID" unsaved-value="null">
+    	    <generator class="native"/>
+    	</id>
+    	
+    	<property name="reportID" column="REPORT_ID"/>
+    	<property name="recordTypeCode" column="RECORD_TYPE_CODE"/>
+    	<property name="recordTypeNameE" column="RECORD_TYPE_ENG"/>
+    	<property name="recordTypeNameF" column="RECORD_TYPE_FR"/>
+    	<property name="reportLink" column="REPORT_LINK"/>
+    	<property name="aerID" column="AER_ID"/>
+    </class>
+
+</hibernate-mapping>   

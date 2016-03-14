@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+<!-- ========== Data Source Configuration ============================== -->
+  
+  <!-- ========== Form Bean Definitions ================================== -->
+
+  <form-beans>
+	<form-bean name="searchForm"		type="ca.gc.hc.view.SearchForm" />
+	<form-bean name="pagerForm"			type="ca.gc.hc.view.PagerForm" />
+	<form-bean name="reportForm"		type="ca.gc.hc.view.ReportForm" />
+	<form-bean name="exportForm"		type="ca.gc.hc.view.ExportForm" />
+	<form-bean name="reportDrugForm" 	type="ca.gc.hc.view.ReportDrugForm" />
+    <form-bean name="reportElementForm" type="ca.gc.hc.view.ReportElementForm"/>	
+	<form-bean name="dummyForm"			type="ca.gc.hc.view.DummyForm" />
+  </form-beans>
+
+  <!--  Global Exceptions  --> 
+  <global-exceptions /> 
+  <!--  Global Forwards --> 
+  <global-forwards>
+    <forward name="SearchPage" path="/search.recherche.do"/>
+    <forward name="sessionTimeout" path="/jsp/timeout.jsp" /> 
+  </global-forwards>
+  
+  <!-- ========== Action Mapping Definitions ============================= -->
+  <action-mappings>
+    <action path="/start-debuter" 
+            type="ca.gc.hc.controller.StartupAction" 
+            name="dummyForm" >      
+      <forward name="searchPage" path="/LoadSearch.do"/>            
+      <forward name="failure" path="t.failure.echec" />       
+    </action>
+    
+    <action path="/LoadSearch" 
+    		scope="session"
+            type="ca.gc.hc.controller.LoadSearchAction" 
+            name="searchForm"
+            validate="false"
+			input="t.search.recherche" >      
+      <forward name="success" path="t.search.recherche"/>            
+      <forward name="failure" path="t.failure.echec" />       
+    </action>
+    
+    <action path="/search-recherche"
+    		scope="session"
+            type="ca.gc.hc.controller.SearchAction"
+			parameter="action"
+			validate="false"
+            name="searchForm"
+			input="t.search.recherche" >
+      <forward name="success" path="t.result.resultat"/>
+      <forward name="failure" path="t.failure.echec" />
+      <forward name="backToSearch" path="t.search.recherche" />
+      <forward name="sortSearch" path="/search-recherche.do?action=searchExecute"/> 
+      <forward name="reportElements" path="t.elements"/>       
+      <forward name="anchor" path="language-langage.do?url=t.search.recherche" />           
+    </action>
+    
+    <action path="/result-resultat" 
+    		scope="session"
+            type="ca.gc.hc.controller.SearchResultsAction" 
+			parameter="action"
+            name="searchForm"
+            validate="false"
+			input="t.search.recherche" >      
+      <forward name="backToSearch" path="t.search.recherche"/>
+	  <forward name="exportOption" path="t.option"/>            
+      <forward name="newSearch" path="/LoadSearch.do" />
+	  <forward name="searchResults" path="t.result.resultat" />       
+    </action>            
+
+	<action path="/report-rapport-elements" 
+	    type="ca.gc.hc.controller.ReportElementsAction"
+	    name="reportElementForm"
+	    parameter="action"
+	    input="t.elements">
+		<forward name="failure" path="t.failure.echec" /> 
+		<forward name="success" path="t.result.resultat" /> 
+	    <forward name="reportElements" path="t.elements"/>             		
+	</action>
+	
+	<action path="/previous-precedent"
+            type="ca.gc.hc.controller.DisplayPreviousPageAction"
+            name="pagerForm"
+            scope="request" parameter="ten"
+            validate="false"
+            input="t.result.resultat">
+	  <forward name="success"
+               path="t.result.resultat" 
+               redirect="false" />
+	</action>
+
+    <action path="/next-suivant"
+            type="ca.gc.hc.controller.DisplayNextPageAction"
+            name="pagerForm"
+            scope="request" parameter="ten"
+            validate="false"
+            input="t.result.resultat">
+        <forward name="success"
+                 path="t.result.resultat" 
+                 redirect="false" />
+    </action>
+
+    <action path="/report-rapport" 
+    		scope="session"
+            type="ca.gc.hc.controller.ReportAction"
+			parameter="action"
+            name="dummyForm"
+			input="t.report.rapport.info" >
+      <forward name="success" path="t.report.rapport.info"/>
+      <forward name="failure" path="t.failure.echec" />
+      <forward name="backToSearchResults" path="t.result.resultat"/>            
+      <forward name="newSearch" path="/LoadSearch.do" />
+    </action>
+    
+    <action path="/exportOption"
+    		scope="session"
+            type="ca.gc.hc.controller.ExportAction"
+			parameter="action"
+			validate="false"
+            name="exportForm"
+			input="t.option" >
+      <forward name="success" path="t.option"/>
+      <forward name="failure" path="t.failure.echec" />
+      <forward name="excelFailure" path="t.option"/>
+      <forward name="backToSearchResults" path="t.result.resultat"/>
+      <forward name="newSearch" path="/LoadSearch.do" />      
+      <forward name="modifyCriteria" path="/result-resultat.do"/>
+    </action>
+    
+    <action path="/language-langage" 
+    		type="ca.gc.hc.controller.SwitchLanguageAction" 
+    		parameter="formname">	    
+      <forward name="reload" path="/LoadSearch.do"/>    		
+    </action>     
+    
+  </action-mappings>
+
+ 
+	<!--  message-resources  -->
+	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"></controller>
+    <message-resources parameter="resources.ApplicationResources" />
+	<message-resources parameter="resources.CommonLookFeelResources" key="clfRes"/>
+	<message-resources parameter="resources.MessageResources" key="messageRes"/>
+	
+	
+	<!-- Plug-In for Validator Framework -->
+	<!-- 
+   	Add multiple validator resource files by setting the pathnames property 
+   	with a comma delimited list of resource files to load. 
+   	-->
+   	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+     		<set-property property="pathnames" value="/org/apache/struts/validator/validator-rules-compressed.xml,
+         	/WEB-INF/validator/validation.xml,
+         	/WEB-INF/validator/validation-bundles.xml,
+         	/WEB-INF/validator/validation-i18nVariables.xml,
+         	/WEB-INF/validator/validation-type.xml,
+         	/WEB-INF/validator/validation-validwhen.xml" />
+     		<set-property property="stopOnFirstError" value="true" />
+   	</plug-in>
+
+  <!-- Plug-In for Tiles -->
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+	  <set-property property="definitions-config" value="/WEB-INF/tiles-definitions.xml" /> 
+	  <set-property property="definitions-debug" value="2" /> 
+	  <set-property property="definitions-parser-details" value="2" /> 
+	  <set-property property="definitions-parser-validate" value="false" /> 
+	  <set-property property="moduleAware" value="true" /> 
+  </plug-in>
+  
+  </struts-config>

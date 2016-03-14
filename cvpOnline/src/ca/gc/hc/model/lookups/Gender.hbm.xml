@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping>
+       
+    <class name="ca.gc.hc.model.lookups.Gender" table="GENDER_LX" mutable="false">
+    	<id name="genderID" column="GENDER_LX_ID" unsaved-value="null">
+    	    <generator class="native"/>
+    	</id>
+    	<property name="genderCode" column="GENDER_CODE"/>
+    	<property name="genderNameE" column="EN_DESC"/>
+    	<property name="genderNameF" column="FR_DESC"/>    	
+    </class>
+
+</hibernate-mapping>   

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="ca.gc.hc.model.ReportDrugMV" table="REPORT_DRUGS_MV">
+		<id name="reportDrugID" column="REPORT_DRUG_ID" unsaved-value="null">
+			<generator class="native" />
+		</id>
+		<many-to-one name="report" class="ca.gc.hc.model.Report"
+			column="REPORT_ID" cascade="none" lazy="no-proxy" />
+		<property name="drugProductID" column="DRUG_PRODUCT_ID"
+			insert="false" update="false" />
+		<property name="drugName" column="DRUGNAME" />
+		<property name="drugInvolvCode" column="DRUGINVOLV_CODE" />
+		<property name="drugInvolvNameE" column="DRUGINVOLV_ENG" />
+		<property name="drugInvolvNameF" column="DRUGINVOLV_FR" />
+		<property name="routeAdminNameE" column="ROUTEADMIN_ENG" />
+		<property name="routeAdminNameF" column="ROUTEADMIN_FR" />
+		<property name="unitDoseQty" column="UNIT_DOSE_QTY" />
+		<property name="doseUnitNameE" column="DOSE_UNIT_ENG" />
+		<property name="doseUnitNameF" column="DOSE_UNIT_FR" />
+		<property name="frequency" column="FREQUENCY" />
+		<property name="freqTimeUnitNameE" column="FREQ_TIME_UNIT_ENG" />
+		<property name="freqTimeUnitNameF" column="FREQ_TIME_UNIT_FR" />
+		<property name="therapyDuration" column="THERAPY_DURATION" />
+		<property name="therapyDurationUnitNameE" column="THERAPY_DURATION_UNIT_ENG" />
+		<property name="therapyDurationUnitNameF" column="THERAPY_DURATION_UNIT_FR" />
+		<property name="indicationNameE" column="INDICATION_NAME_ENG"/> 
+		<property name="indicationNameF" column="INDICATION_NAME_FR"/>
+		<property name="dosageFormNameE" column="DOSAGEFORM_ENG" />
+		<property name="dosageFormNameF" column="DOSAGEFORM_FR" />
+		<property name="reportID" column="REPORT_ID" insert="false" update="false" />
+
+	</class>
+
+</hibernate-mapping>   

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping>
+       
+    <class name="ca.gc.hc.model.lookups.MeddraPT" table="MEDDRA_PT_LX">
+    	<id name="ptCode" column="PT_CODE" unsaved-value="null">
+    	    <generator class="native"/>
+    	</id>
+    	<property name="ptNameE" column="PT_NAME_ENG"/>
+    	<property name="ptNameF" column="PT_NAME_FR"/>
+    	<property name="meddraVersion" column="MEDDRA_VERSION"/>    	
+    </class>
+
+</hibernate-mapping>   

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+"http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+
+<tiles-definitions>
+  <!-- This is the main layout used as the root for other page definitions. -->
+  <definition name="baseDefinition" path="/layout/layout.jsp">
+    <put name="header"		value="/layout/header.jsp" />
+    <put name="subheader"   value="" />
+    <put name="body"		value="/layout/body.jsp" />
+    <put name="footer"		value="/layout/footer.jsp" />
+    <put name="metaData"	value="/layout/metaData.jsp" />
+	<put name="formname"	value="" />
+	<put name="criteria"	value=""/>
+  </definition>
+  <!-- =======================================================  -->
+  <!--                  Child definitions                       -->
+  <!-- =======================================================  -->
+  <!-- These definitions inherit from the main base definition.
+        The title and the content jsp are overwritten.    -->
+
+  <definition name="t.search.recherche" extends="baseDefinition">
+    <put name="titleKey"	value="title.search" />
+    <put name="body"		value="/jsp/search.jsp" />
+    <put name="formname"	value="t.search.recherche" /> 
+  </definition>
+
+  <definition name="t.result.resultat" extends="baseDefinition">
+    <put name="criteria"	value="/jsp/searchCriteria.jsp" /> 
+    <put name="titleKey"	value="title.search.result" />
+    <put name="body"		value="/jsp/searchResults.jsp" />
+ 	<put name="formname"	value="t.result.resultat" />
+  </definition>
+
+  <definition name="t.report.rapport.info" extends="baseDefinition">
+    <put name="titleKey"	value="title.reportInfo" />
+    <put name="body"		value="/jsp/reportInfo.jsp" />
+ 	<put name="formname"	value="t.report.rapport.info" />
+  </definition>
+
+  <definition name="t.elements" extends="baseDefinition">
+    <put name="titleKey"	value="title.report.elements" />
+    <put name="body"		value="/jsp/reportElements.jsp" />
+    <put name="formname"	value="t.elements" /> 
+  </definition>
+  
+  <definition name="t.option" extends="baseDefinition">
+    <put name="titleKey"	value="title.exportOption" />
+    <put name="body"		value="/jsp/exportOption.jsp" />
+ 	<put name="formname"	value="t.option" />
+  </definition>
+  
+  <definition name="t.failure.echec" extends="baseDefinition">
+    <put name="titleKey"	value="title.error.page" />
+    <put name="body"		value="/jsp/failure.jsp" />
+    <put name="formname"	value="t.failure.echec" /> 
+  </definition>
+  
+  <definition name="t.timeOut" extends="baseDefinition">
+    <put name="titleKey"	value="title.main" />
+    <put name="body"		value="/jsp/timeout.jsp" />
+	<put name="formname"	value="t.timeOut" />
+  </definition> 
+
+</tiles-definitions>

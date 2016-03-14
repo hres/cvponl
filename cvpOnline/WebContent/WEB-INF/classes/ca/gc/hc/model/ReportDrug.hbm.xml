@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="ca.gc.hc.model.ReportDrug" table="REPORT_DRUG"
+		mutable="false">
+		<id name="drugID" column="REPORT_DRUG_ID" unsaved-value="null">
+			<generator class="native" />
+		</id>
+
+		<property name="reportID" column="REPORT_ID" insert="false"
+			update="false" />
+		<property name="drugProductID" column="DRUG_PRODUCT_ID"
+			insert="false" update="false" />
+		<property name="drugName" column="DRUGNAME" />
+		<property name="drugInvCode" column="DRUGINVOLV_CODE" />
+		<property name="drugInvDescE" column="DRUGINVOLV_ENG" />
+		<property name="drugInvDescF" column="DRUGINVOLV_FR" />
+		<property name="routeAdminCode" column="ROUTEADMIN_CODE" />
+		<property name="routeAdminNameE" column="ROUTEADMIN_ENG" />
+		<property name="routeAdminNameF" column="ROUTEADMIN_FR" />
+		<property name="unitDoseQty" column="UNIT_DOSE_QTY" />
+		<property name="doseUnitCode" column="DOSE_UNIT_CODE" />
+		<property name="doseUnitNameE" column="DOSE_UNIT_ENG" />
+		<property name="doseUnitNameF" column="DOSE_UNIT_FR" />
+		<property name="frequency" column="FREQUENCY" />
+		<property name="freqTimeUnitCode" column="FREQ_TIME_UNIT_CODE" />
+		<property name="FreqTimeUnitNameE" column="FREQ_TIME_UNIT_ENG" />
+		<property name="FreqTimeUnitNameF" column="FREQ_TIME_UNIT_FR" />
+		<property name="FreqTime" column="FREQ_TIME" />
+		<property name="FreqTimeStringE" column="FREQUENCY_TIME_ENG" />
+		<property name="FreqTimeStringF" column="FREQUENCY_TIME_FR" />
+		<property name="therapyDuration" column="THERAPY_DURATION" />
+		<property name="therapyDurationUnitCode" column="THERAPY_DURATION_UNIT_CODE" />
+		<property name="therapyDurationUnitNameE" column="THERAPY_DURATION_UNIT_ENG" />
+		<property name="therapyDurationUnitNameF" column="THERAPY_DURATION_UNIT_FR" />
+		<property name="indicationNameE" column="INDICATION_NAME_ENG"/>
+		<property name="indicationNameF" column="INDICATION_NAME_FR"/>
+		<property name="dosageFormCode" column="DOSAGEFORM_CODE" />
+		<property name="dosageFormNameE" column="DOSAGEFORM_ENG" />
+		<property name="dosageFormNameF" column="DOSAGEFORM_FR" />
+		<property name="aerID" column="AER_ID" />
+		<property name="seqProduct" column="SEQ_PRODUCT" />
+		<property name="seqTherapy" column="SEQ_THERAPY" />
+		<property name="productID" column="DRUG_PRODUCT_ID" />
+
+		<many-to-one name="report" class="ca.gc.hc.model.Report"
+			column="REPORT_ID" cascade="none" lazy="no-proxy" />
+
+	</class>
+
+</hibernate-mapping>   

@@ -1,0 +1,43 @@
+<!DOCTYPE hibernate-configuration PUBLIC 
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="show_sql">false</property>
+		<property name="use_sql_comments">true</property>
+		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
+		<property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+		<property name="connection.datasource">jdbc/cvponline_dsn</property>
+
+		<!-- JDBC Settings -->
+		<property name="jdbc.use_streams_for_binary">true</property>
+		<property name="max_fetch_depth">1</property>
+		<property name="jdbc.batch_size">0</property>
+		<property name="jdbc.batch_versioned_data">true</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
+
+		<!-- Transaction API -->
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.WebSphereTransactionManagerLookup</property>
+
+		<mapping resource="ca/gc/hc/model/Drug.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/lookups/Gender.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/lookups/MeddraPT.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/lookups/MeddraSOC.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/lookups/Outcome.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/lookups/ReportLink.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/lookups/ReportSource.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/lookups/ReportType.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/lookups/Seriousness.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/ActiveIngredient.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/Ingredient.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/Report.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/ReportDrug.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/ReportDrugMV.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/ReportReactionMV.hbm.xml" />
+		<mapping resource="ca/gc/hc/model/Reaction.hbm.xml" />
+	</session-factory>
+
+</hibernate-configuration>

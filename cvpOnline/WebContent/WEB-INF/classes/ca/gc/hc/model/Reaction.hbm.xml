@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping>
+       
+    <class name="ca.gc.hc.model.Reaction" table="REACTIONS" mutable="false">
+    	<id name="reactionID" column="REACTION_ID" unsaved-value="null">
+    	    <generator class="native"/>
+    	</id>
+		
+    	<property name="reportID" column="REPORT_ID" insert="false" update="false" />
+    	<property name="duration" column="DURATION"/>
+    	<property name="durationUnitCode" column="DURATION_UNIT_CODE"/>    	
+    	<property name="durationUnitE" column="DURATION_UNIT_ENG"/>
+    	<property name="durationUnitF" column="DURATION_UNIT_FR"/>
+    	<property name="ptCode" column="PT_CODE"/>    	
+    	<property name="ptNameE" column="PT_NAME_ENG"/>
+    	<property name="ptNameF" column="PT_NAME_FR"/>
+    	<property name="socCode" column="SOC_CODE"/>    	
+    	<property name="socNameE" column="SOC_NAME_ENG"/>
+    	<property name="socNameF" column="SOC_NAME_FR"/>
+    	<property name="meddraVersion" column="MEDDRA_VERSION"/>    	
+    	<property name="aerID" column="AER_ID"/>
+    	<property name="seqReaction" column="SEQ_REACT"/>
+    </class>
+
+</hibernate-mapping>   

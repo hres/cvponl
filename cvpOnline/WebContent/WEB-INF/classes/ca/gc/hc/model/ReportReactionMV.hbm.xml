@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping>
+       
+    <class name="ca.gc.hc.model.ReportReactionMV" table="ADR_MV">
+    	<id name="adrID" column="ADR_ID" unsaved-value="null">
+    	    <generator class="native"/>
+    	</id>
+    	<property name="reportID" column="REPORT_ID"/>    	
+    	<property name="reportNumber" column="REPORT_NO"/>
+    	<property name="versionNumber" column="VERSION_NO"/>
+    	<property name="dateReceived" column="DATRECEIVED"/>    	
+    	<property name="initialDateReceived" column="DATINTRECEIVED"/>
+    	<property name="mahNumber" column="MAH_NO"/>
+    	<property name="reportTypeCode" column="REPORT_TYPE_CODE"/>
+    	<property name="reportTypeE" column="REPORT_TYPE_ENG"/>
+    	<property name="reportTypeF" column="REPORT_TYPE_FR"/>
+    	<property name="genderCode" column="GENDER_CODE"/>    	
+    	<property name="genderNameE" column="GENDER_ENG"/>    	
+    	<property name="genderNameF" column="GENDER_FR"/>    	    	    	
+    	<property name="age" column="AGE"/>    	
+    	<property name="ageUnitE" column="AGE_UNIT_ENG"/>
+    	<property name="ageUnitF" column="AGE_UNIT_FR"/>
+    	<property name="ageGroupCode" column="AGE_GROUP_CODE"/>
+    	<property name="ageGroupNameE" column="AGE_GROUP_ENG"/>
+    	<property name="ageGroupNameF" column="AGE_GROUP_FR"/>
+    	<property name="outcomeCode" column="OUTCOME_CODE"/>    	
+    	<property name="outcomeNameE" column="OUTCOME_ENG"/>    	
+    	<property name="outcomeNameF" column="OUTCOME_FR"/>    	    	    	
+    	<property name="weight" column="WEIGHT"/>    	
+    	<property name="weightUnitE" column="WEIGHT_UNIT_ENG"/>    	
+    	<property name="weightUnitF" column="WEIGHT_UNIT_FR"/>    	
+    	<property name="height" column="HEIGHT"/>
+    	<property name="heightUnitE" column="HEIGHT_UNIT_ENG"/>
+    	<property name="heightUnitF" column="HEIGHT_UNIT_FR"/>
+    	<property name="seriousnessCode" column="SERIOUSNESS_CODE"/>    	    	    	    	    	    	
+    	<property name="seriousnessNameE" column="SERIOUSNESS_ENG"/>
+    	<property name="seriousnessNameF" column="SERIOUSNESS_FR"/>
+    	<property name="death" column="DEATH"/>    	    	    	    	    	    	
+    	<property name="disability" column="DISABILITY"/>    	    	    	    	    	    	
+    	<property name="congenitalAnomaly" column="CONGENITAL_ANOMALY"/>    	    	    	    	    	    	
+    	<property name="lifeThreatening" column="LIFE_THREATENING"/>    	    	    	    	    	    	
+    	<property name="hospitalRequired" column="HOSP_REQUIRED"/>    	    	    	    	    	    	
+    	<property name="otherMedicalCondition" column="OTHER_MEDICALLY_IMP_COND"/>    	    	    	    	    	    	
+    	<property name="reporterTypeNameE" column="REPORTER_TYPE_ENG"/>    	    	    	    	    	    	
+    	<property name="reporterTypeNameF" column="REPORTER_TYPE_FR"/>    	    	    	    	    	    	    	    	    	    	    	    	    	    	
+    	<property name="reportSourceCode" column="SOURCE_CODE"/>
+    	<property name="reportSourceNameE" column="SOURCE_ENG"/>
+    	<property name="reportSourceNameF" column="SOURCE_FR"/>    	    	
+    	<property name="reportLinkFlag" column="REPORT_LINK_FLG"/>
+
+    	<property name="reactionID" column="REACTION_ID"/>    	
+    	<property name="duration" column="DURATION"/>
+    	<property name="durationUnitCode" column="DURATION_UNIT_CODE"/>    	
+    	<property name="durationUnitE" column="DURATION_UNIT_ENG"/>
+    	<property name="durationUnitF" column="DURATION_UNIT_FR"/>
+    	<property name="ptCode" column="PT_CODE"/>    	
+    	<property name="ptNameE" column="PT_NAME_ENG"/>
+    	<property name="ptNameF" column="PT_NAME_FR"/>
+    	<property name="socCode" column="SOC_CODE"/>    	
+    	<property name="socNameE" column="SOC_NAME_ENG"/>
+    	<property name="socNameF" column="SOC_NAME_FR"/>
+    	<property name="meddraVersion" column="MEDDRA_VERSION"/>   
+    </class>
+
+</hibernate-mapping>   
